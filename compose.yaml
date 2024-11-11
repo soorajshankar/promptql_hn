@@ -1,5 +1,6 @@
 include:
   - path: app/connector/mypostgres/compose.yaml
+  - path: app/connector/functions/compose.yaml
 services:
   engine:
     build:

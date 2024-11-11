@@ -199,3 +199,20 @@ definition:
       select:
         filter: null
 
+---
+kind: Relationship
+version: v1
+definition:
+  description: The scraped metadata from a URL, such as the title, timestamp, content and word count. scraped during the query execution.
+  name: scrapedMetadata
+  sourceType: HnPosts
+  target:
+    command:
+      name: ScrapeUrl
+  mapping:
+    - source:
+        fieldPath:
+          - fieldName: url
+      target:
+        argument:
+          argumentName: url

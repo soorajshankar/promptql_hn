@@ -7,6 +7,12 @@ definition:
   includePaths:
     - metadata
   envMapping:
+    APP_FUNCTIONS_AUTHORIZATION_HEADER:
+      fromEnv: APP_FUNCTIONS_AUTHORIZATION_HEADER
+    APP_FUNCTIONS_READ_URL:
+      fromEnv: APP_FUNCTIONS_READ_URL
+    APP_FUNCTIONS_WRITE_URL:
+      fromEnv: APP_FUNCTIONS_WRITE_URL
     APP_MYPOSTGRES_AUTHORIZATION_HEADER:
       fromEnv: APP_MYPOSTGRES_AUTHORIZATION_HEADER
     APP_MYPOSTGRES_READ_URL:
@@ -16,3 +22,5 @@ definition:
   connectors:
     - path: connector/mypostgres/connector.yaml
       connectorLinkName: mypostgres
+    - path: connector/functions/connector.yaml
+      connectorLinkName: functions

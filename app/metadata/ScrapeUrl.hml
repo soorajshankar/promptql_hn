@@ -1,0 +1,74 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: ScrapedMetadata
+  fields:
+    - name: author
+      type: String
+    - name: description
+      type: String
+    - name: imageUrls
+      type: "[String!]!"
+    - name: mainText
+      type: String
+    - name: timestamp
+      type: String
+    - name: title
+      type: String
+    - name: url
+      type: String
+    - name: wordCount
+      type: Float
+  graphql:
+    typeName: ScrapedMetadata
+    inputTypeName: ScrapedMetadataInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: functions
+      dataConnectorObjectType: ScrapedMetadata
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: ScrapedMetadata
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - author
+          - description
+          - imageUrls
+          - mainText
+          - timestamp
+          - title
+          - url
+          - wordCount
+
+---
+kind: Command
+version: v1
+definition:
+  name: ScrapeUrl
+  outputType: ScrapedMetadata!
+  arguments:
+    - name: url
+      type: String!
+      description: The URL to scrape
+  source:
+    dataConnectorName: functions
+    dataConnectorCommand:
+      function: scrapeUrl
+  graphql:
+    rootFieldName: scrapeUrl
+    rootFieldKind: Query
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: ScrapeUrl
+  permissions:
+    - role: admin
+      allowExecution: true
+

@@ -1,0 +1,102 @@
+kind: DataConnectorLink
+version: v1
+definition:
+  name: functions
+  url:
+    readWriteUrls:
+      read:
+        valueFromEnv: APP_FUNCTIONS_READ_URL
+      write:
+        valueFromEnv: APP_FUNCTIONS_WRITE_URL
+  headers:
+    Authorization:
+      valueFromEnv: APP_FUNCTIONS_AUTHORIZATION_HEADER
+  schema:
+    version: v0.1
+    schema:
+      scalar_types:
+        Float:
+          representation:
+            type: float64
+          aggregate_functions: {}
+          comparison_operators:
+            _eq:
+              type: equal
+        String:
+          representation:
+            type: string
+          aggregate_functions: {}
+          comparison_operators:
+            _eq:
+              type: equal
+      object_types:
+        ScrapedMetadata:
+          fields:
+            author:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: String
+            description:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: String
+            imageUrls:
+              type:
+                type: array
+                element_type:
+                  type: named
+                  name: String
+            mainText:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: String
+            timestamp:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: String
+            title:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: String
+            url:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: String
+            wordCount:
+              type:
+                type: nullable
+                underlying_type:
+                  type: named
+                  name: Float
+      collections: []
+      functions:
+        - name: scrapeUrl
+          arguments:
+            url:
+              description: The URL to scrape
+              type:
+                type: named
+                name: String
+          result_type:
+            type: named
+            name: ScrapedMetadata
+      procedures: []
+    capabilities:
+      version: 0.1.6
+      capabilities:
+        query:
+          variables: {}
+          nested_fields: {}
+        mutation: {}
