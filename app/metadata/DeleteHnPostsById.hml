@@ -1,0 +1,73 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: DeleteHnPostsByIdResponse
+  description: Responses from the 'delete_hn_posts_by_id' procedure
+  fields:
+    - name: affectedRows
+      type: Int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[HnPosts!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: DeleteHnPostsByIdResponse
+    inputTypeName: DeleteHnPostsByIdResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: delete_hn_posts_by_id_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: DeleteHnPostsByIdResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: DeleteHnPostsById
+  outputType: DeleteHnPostsByIdResponse!
+  arguments:
+    - name: keyId
+      type: Int4!
+      description: The original Hacker News post ID
+    - name: preCheck
+      type: HnPostsBoolExp
+      description: Delete permission predicate over the 'hn_posts' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: delete_hn_posts_by_id
+    argumentMapping:
+      keyId: key_id
+      preCheck: pre_check
+  graphql:
+    rootFieldName: deleteHnPostsById
+    rootFieldKind: Mutation
+  description: Delete any row on the 'hn_posts' collection using the 'id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: DeleteHnPostsById
+  permissions:
+    - role: admin
+      allowExecution: true
+

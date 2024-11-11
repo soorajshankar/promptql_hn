@@ -1,0 +1,417 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UpdateColumnHnPostsCreatedAt
+  description: Update the 'created_at' column in the 'hn_posts' collection
+  fields:
+    - name: set
+      type: Timestamptz
+      description: Set the column to this value
+  graphql:
+    typeName: UpdateColumnHnPostsCreatedAt
+    inputTypeName: UpdateColumnHnPostsCreatedAtInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hn_posts_created_at
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UpdateColumnHnPostsCreatedAt
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UpdateColumnHnPostsId
+  description: Update the 'id' column in the 'hn_posts' collection
+  fields:
+    - name: set
+      type: Int4!
+      description: Set the column to this value
+  graphql:
+    typeName: UpdateColumnHnPostsId
+    inputTypeName: UpdateColumnHnPostsIdInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hn_posts_id
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UpdateColumnHnPostsId
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UpdateColumnHnPostsPostedAt
+  description: Update the 'posted_at' column in the 'hn_posts' collection
+  fields:
+    - name: set
+      type: Timestamptz!
+      description: Set the column to this value
+  graphql:
+    typeName: UpdateColumnHnPostsPostedAt
+    inputTypeName: UpdateColumnHnPostsPostedAtInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hn_posts_posted_at
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UpdateColumnHnPostsPostedAt
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UpdateColumnHnPostsPostedBy
+  description: Update the 'posted_by' column in the 'hn_posts' collection
+  fields:
+    - name: set
+      type: Varchar!
+      description: Set the column to this value
+  graphql:
+    typeName: UpdateColumnHnPostsPostedBy
+    inputTypeName: UpdateColumnHnPostsPostedByInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hn_posts_posted_by
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UpdateColumnHnPostsPostedBy
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UpdateColumnHnPostsScore
+  description: Update the 'score' column in the 'hn_posts' collection
+  fields:
+    - name: set
+      type: Int4!
+      description: Set the column to this value
+  graphql:
+    typeName: UpdateColumnHnPostsScore
+    inputTypeName: UpdateColumnHnPostsScoreInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hn_posts_score
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UpdateColumnHnPostsScore
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UpdateColumnHnPostsTitle
+  description: Update the 'title' column in the 'hn_posts' collection
+  fields:
+    - name: set
+      type: Text
+      description: Set the column to this value
+  graphql:
+    typeName: UpdateColumnHnPostsTitle
+    inputTypeName: UpdateColumnHnPostsTitleInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hn_posts_title
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UpdateColumnHnPostsTitle
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UpdateColumnHnPostsUpdatedAt
+  description: Update the 'updated_at' column in the 'hn_posts' collection
+  fields:
+    - name: set
+      type: Timestamptz
+      description: Set the column to this value
+  graphql:
+    typeName: UpdateColumnHnPostsUpdatedAt
+    inputTypeName: UpdateColumnHnPostsUpdatedAtInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hn_posts_updated_at
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UpdateColumnHnPostsUpdatedAt
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UpdateColumnHnPostsUrl
+  description: Update the 'url' column in the 'hn_posts' collection
+  fields:
+    - name: set
+      type: Text
+      description: Set the column to this value
+  graphql:
+    typeName: UpdateColumnHnPostsUrl
+    inputTypeName: UpdateColumnHnPostsUrlInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_column_hn_posts_url
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UpdateColumnHnPostsUrl
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UpdateHnPostsByIdUpdateColumns
+  description: Update the columns of the 'hn_posts' collection
+  fields:
+    - name: createdAt
+      type: UpdateColumnHnPostsCreatedAt
+      description: Update the 'created_at' column in the 'hn_posts' collection.
+    - name: id
+      type: UpdateColumnHnPostsId
+      description: Update the 'id' column in the 'hn_posts' collection.
+    - name: postedAt
+      type: UpdateColumnHnPostsPostedAt
+      description: Update the 'posted_at' column in the 'hn_posts' collection.
+    - name: postedBy
+      type: UpdateColumnHnPostsPostedBy
+      description: Update the 'posted_by' column in the 'hn_posts' collection.
+    - name: score
+      type: UpdateColumnHnPostsScore
+      description: Update the 'score' column in the 'hn_posts' collection.
+    - name: title
+      type: UpdateColumnHnPostsTitle
+      description: Update the 'title' column in the 'hn_posts' collection.
+    - name: updatedAt
+      type: UpdateColumnHnPostsUpdatedAt
+      description: Update the 'updated_at' column in the 'hn_posts' collection.
+    - name: url
+      type: UpdateColumnHnPostsUrl
+      description: Update the 'url' column in the 'hn_posts' collection.
+  graphql:
+    typeName: UpdateHnPostsByIdUpdateColumns
+    inputTypeName: UpdateHnPostsByIdUpdateColumnsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_hn_posts_by_id_update_columns
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        postedAt:
+          column:
+            name: posted_at
+        postedBy:
+          column:
+            name: posted_by
+        score:
+          column:
+            name: score
+        title:
+          column:
+            name: title
+        updatedAt:
+          column:
+            name: updated_at
+        url:
+          column:
+            name: url
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UpdateHnPostsByIdUpdateColumns
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - postedAt
+          - postedBy
+          - score
+          - title
+          - updatedAt
+          - url
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: UpdateHnPostsByIdResponse
+  description: Responses from the 'update_hn_posts_by_id' procedure
+  fields:
+    - name: affectedRows
+      type: Int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[HnPosts!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: UpdateHnPostsByIdResponse
+    inputTypeName: UpdateHnPostsByIdResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: update_hn_posts_by_id_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: UpdateHnPostsByIdResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: UpdateHnPostsById
+  outputType: UpdateHnPostsByIdResponse!
+  arguments:
+    - name: keyId
+      type: Int4!
+      description: The original Hacker News post ID
+    - name: postCheck
+      type: HnPostsBoolExp
+      description: Update permission post-condition predicate over the 'hn_posts' collection
+    - name: preCheck
+      type: HnPostsBoolExp
+      description: Update permission pre-condition predicate over the 'hn_posts' collection
+    - name: updateColumns
+      type: UpdateHnPostsByIdUpdateColumns!
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: update_hn_posts_by_id
+    argumentMapping:
+      keyId: key_id
+      postCheck: post_check
+      preCheck: pre_check
+      updateColumns: update_columns
+  graphql:
+    rootFieldName: updateHnPostsById
+    rootFieldKind: Mutation
+  description: Update any row on the 'hn_posts' collection using the 'id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: UpdateHnPostsById
+  permissions:
+    - role: admin
+      allowExecution: true
+

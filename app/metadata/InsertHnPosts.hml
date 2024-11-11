@@ -1,0 +1,150 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InsertHnPostsObject
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Int4!
+      description: The original Hacker News post ID
+    - name: postedAt
+      type: Timestamptz!
+      description: When the post was created on Hacker News
+    - name: postedBy
+      type: Varchar!
+      description: The Hacker News username who posted it
+    - name: score
+      type: Int4
+      description: The score/points of the post
+    - name: title
+      type: Text
+      description: The title of the post
+    - name: updatedAt
+      type: Timestamptz
+    - name: url
+      type: Text
+      description: The URL the post links to
+  graphql:
+    typeName: InsertHnPostsObject
+    inputTypeName: InsertHnPostsObjectInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_hn_posts_object
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        postedAt:
+          column:
+            name: posted_at
+        postedBy:
+          column:
+            name: posted_by
+        score:
+          column:
+            name: score
+        title:
+          column:
+            name: title
+        updatedAt:
+          column:
+            name: updated_at
+        url:
+          column:
+            name: url
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InsertHnPostsObject
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - postedAt
+          - postedBy
+          - score
+          - title
+          - updatedAt
+          - url
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: InsertHnPostsResponse
+  description: Responses from the 'insert_hn_posts' procedure
+  fields:
+    - name: affectedRows
+      type: Int4!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[HnPosts!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: InsertHnPostsResponse
+    inputTypeName: InsertHnPostsResponseInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: insert_hn_posts_response
+      fieldMapping:
+        affectedRows:
+          column:
+            name: affected_rows
+        returning:
+          column:
+            name: returning
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: InsertHnPostsResponse
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affectedRows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: InsertHnPosts
+  outputType: InsertHnPostsResponse!
+  arguments:
+    - name: objects
+      type: "[InsertHnPostsObject!]!"
+    - name: postCheck
+      type: HnPostsBoolExp
+      description: Insert permission predicate over the 'hn_posts' collection
+  source:
+    dataConnectorName: mypostgres
+    dataConnectorCommand:
+      procedure: insert_hn_posts
+    argumentMapping:
+      objects: objects
+      postCheck: post_check
+  graphql:
+    rootFieldName: insertHnPosts
+    rootFieldKind: Mutation
+  description: Insert into the hn_posts table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: InsertHnPosts
+  permissions:
+    - role: admin
+      allowExecution: true
+

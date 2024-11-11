@@ -1,0 +1,201 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: HnPosts
+  description: Stores Hacker News posts
+  fields:
+    - name: createdAt
+      type: Timestamptz
+    - name: id
+      type: Int4!
+      description: The original Hacker News post ID
+    - name: postedAt
+      type: Timestamptz!
+      description: When the post was created on Hacker News
+    - name: postedBy
+      type: Varchar!
+      description: The Hacker News username who posted it
+    - name: score
+      type: Int4!
+      description: The score/points of the post
+    - name: title
+      type: Text
+      description: The title of the post
+    - name: updatedAt
+      type: Timestamptz
+    - name: url
+      type: Text
+      description: The URL the post links to
+  graphql:
+    typeName: HnPosts
+    inputTypeName: HnPostsInput
+  dataConnectorTypeMapping:
+    - dataConnectorName: mypostgres
+      dataConnectorObjectType: hn_posts
+      fieldMapping:
+        createdAt:
+          column:
+            name: created_at
+        id:
+          column:
+            name: id
+        postedAt:
+          column:
+            name: posted_at
+        postedBy:
+          column:
+            name: posted_by
+        score:
+          column:
+            name: score
+        title:
+          column:
+            name: title
+        updatedAt:
+          column:
+            name: updated_at
+        url:
+          column:
+            name: url
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: HnPosts
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - createdAt
+          - id
+          - postedAt
+          - postedBy
+          - score
+          - title
+          - updatedAt
+          - url
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: HnPostsBoolExp
+  operand:
+    object:
+      type: HnPosts
+      comparableFields:
+        - fieldName: createdAt
+          booleanExpressionType: TimestamptzBoolExp
+        - fieldName: id
+          booleanExpressionType: Int4BoolExp
+        - fieldName: postedAt
+          booleanExpressionType: TimestamptzBoolExp
+        - fieldName: postedBy
+          booleanExpressionType: VarcharBoolExp
+        - fieldName: score
+          booleanExpressionType: Int4BoolExp
+        - fieldName: title
+          booleanExpressionType: TextBoolExp
+        - fieldName: updatedAt
+          booleanExpressionType: TimestamptzBoolExp
+        - fieldName: url
+          booleanExpressionType: TextBoolExp
+      comparableRelationships: []
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: HnPostsBoolExp
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: HnPostsAggExp
+  operand:
+    object:
+      aggregatedType: HnPosts
+      aggregatableFields:
+        - fieldName: createdAt
+          aggregateExpression: TimestamptzAggExp
+        - fieldName: id
+          aggregateExpression: Int4AggExp
+        - fieldName: postedAt
+          aggregateExpression: TimestamptzAggExp
+        - fieldName: postedBy
+          aggregateExpression: VarcharAggExp
+        - fieldName: score
+          aggregateExpression: Int4AggExp
+        - fieldName: title
+          aggregateExpression: TextAggExp
+        - fieldName: updatedAt
+          aggregateExpression: TimestamptzAggExp
+        - fieldName: url
+          aggregateExpression: TextAggExp
+  count:
+    enable: true
+  graphql:
+    selectTypeName: HnPostsAggExp
+
+---
+kind: Model
+version: v1
+definition:
+  name: HnPosts
+  objectType: HnPosts
+  source:
+    dataConnectorName: mypostgres
+    collection: hn_posts
+  filterExpressionType: HnPostsBoolExp
+  aggregateExpression: HnPostsAggExp
+  orderableFields:
+    - fieldName: createdAt
+      orderByDirections:
+        enableAll: true
+    - fieldName: id
+      orderByDirections:
+        enableAll: true
+    - fieldName: postedAt
+      orderByDirections:
+        enableAll: true
+    - fieldName: postedBy
+      orderByDirections:
+        enableAll: true
+    - fieldName: score
+      orderByDirections:
+        enableAll: true
+    - fieldName: title
+      orderByDirections:
+        enableAll: true
+    - fieldName: updatedAt
+      orderByDirections:
+        enableAll: true
+    - fieldName: url
+      orderByDirections:
+        enableAll: true
+  graphql:
+    selectMany:
+      queryRootField: hnPosts
+    selectUniques:
+      - queryRootField: hnPostsById
+        uniqueIdentifier:
+          - id
+    orderByExpressionType: HnPostsOrderBy
+    filterInputTypeName: HnPostsFilterInput
+    aggregate:
+      queryRootField: hnPostsAggregate
+  description: Stores Hacker News posts
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: HnPosts
+  permissions:
+    - role: admin
+      select:
+        filter: null
+
