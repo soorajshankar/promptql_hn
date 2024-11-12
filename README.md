@@ -63,7 +63,7 @@ This project serves as a template for extending PromptQL's capabilities through 
 - "Generate a reading list of the most insightful technical articles based on comment count and article depth (using word count and content structure)."
 
 #### Market Research
-- "What types of AI products launched on HN in 2023 received the most positive attention? Analyze both post metrics and article content."
+- "What types of AI products launched on HN in 2024 received the most positive attention? Analyze both post metrics and article content from scrapedMetada."
 
 - "Help me understand the common characteristics of successful Show HN posts in my domain, including their landing page structure and content approach."
 
